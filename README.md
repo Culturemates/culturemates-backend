@@ -1,2 +1,2 @@
 # culturemates-backend
-culturemates 프로젝트 백엔드 ---test2
+culturemates 프로젝트 백엔드 ---test3
