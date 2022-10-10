@@ -26,4 +26,10 @@ public interface MovieListRepository extends JpaRepository<MovieList, Long> {
             + "order by movielist.screenEndPeriod desc")
     @QueryHints(value = @QueryHint(name = "org.hibernate.readOnly", value = "true"))
     List<MovieList> findCurrentMovieList(@Param("nowTime") int nowTime);
+
+    @Query("select distinct movielist from MovieList movielist "
+            + "where movielist.screenStartPeriod >= :nowTime "
+            + "order by movielist.screenEndPeriod desc")
+    @QueryHints(value = @QueryHint(name = "org.hibernate.readOnly", value = "true"))
+    List<MovieList> findExpectedMovieList(@Param("nowTime") int nowTime);
 }

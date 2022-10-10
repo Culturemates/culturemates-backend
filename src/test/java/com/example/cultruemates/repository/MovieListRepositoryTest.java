@@ -44,4 +44,24 @@ public class MovieListRepositoryTest extends RepositoryTest{
             assertThat(result).isTrue();
         }
     }
+
+    @Test
+    void findExpectedMovieList(){
+        //given
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        int nowTime = Integer.parseInt(now.format(formatter));
+        System.out.println(nowTime);
+
+        //when
+        List<MovieList> responses = movieListRepository.findExpectedMovieList(nowTime);
+
+        //then
+        System.out.println("----------------결과");
+        System.out.println(responses.stream().count());
+        for (int i = 0; i < responses.stream().count(); i++) {
+            boolean result = responses.get(i).getScreenStartPeriod() >= nowTime;
+            assertThat(result).isTrue();
+        }
+    }
 }

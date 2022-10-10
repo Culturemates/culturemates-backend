@@ -1,6 +1,7 @@
 package com.example.cultruemates.controller;
 
 import com.example.cultruemates.dto.CurrentMovieListResponse;
+import com.example.cultruemates.dto.ExpectedMovieListResponse;
 import com.example.cultruemates.dto.MovieListResponse;
 import com.example.cultruemates.service.MovieListService;
 import lombok.RequiredArgsConstructor;
@@ -30,6 +31,15 @@ public class MovieListController {
     public ResponseEntity<List<CurrentMovieListResponse>> findCurrrentScreening(){
 
         List<CurrentMovieListResponse> responses = movieListService.findCurrentMovieList();
+
+        return ResponseEntity.ok()
+                .body(responses);
+    }
+
+    @GetMapping("expected")
+    public ResponseEntity<List<ExpectedMovieListResponse>> findExpectedScreening(){
+
+        List<ExpectedMovieListResponse> responses = movieListService.findExpectedMovieList();
 
         return ResponseEntity.ok()
                 .body(responses);

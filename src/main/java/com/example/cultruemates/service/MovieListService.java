@@ -2,6 +2,7 @@ package com.example.cultruemates.service;
 
 import com.example.cultruemates.domain.MovieList;
 import com.example.cultruemates.dto.CurrentMovieListResponse;
+import com.example.cultruemates.dto.ExpectedMovieListResponse;
 import com.example.cultruemates.dto.MovieListResponse;
 import com.example.cultruemates.repository.MovieListRepository;
 import lombok.RequiredArgsConstructor;
@@ -41,6 +42,25 @@ public class MovieListService {
 
         List<CurrentMovieListResponse> responses = movieListRepository.findCurrentMovieList(nowTime).stream()
                 .map((resp)-> new CurrentMovieListResponse(
+                        resp.getMovieCd(),
+                        resp.getMovieName(),
+                        resp.getImgurl(),
+                        resp.getUserRating(),
+                        resp.getScreenStartPeriod(),
+                        resp.getScreenEndPeriod()
+                )).collect(Collectors.toList());
+
+        return responses;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ExpectedMovieListResponse> findExpectedMovieList(){
+        LocalDate now = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+        int nowTime = Integer.parseInt(now.format(formatter));
+
+        List<ExpectedMovieListResponse> responses = movieListRepository.findExpectedMovieList(nowTime).stream()
+                .map((resp)-> new ExpectedMovieListResponse(
                         resp.getMovieCd(),
                         resp.getMovieName(),
                         resp.getImgurl(),
