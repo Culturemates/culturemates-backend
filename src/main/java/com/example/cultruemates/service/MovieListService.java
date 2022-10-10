@@ -19,7 +19,7 @@ public class MovieListService {
     public List<MovieListResponse> findMovieListByUserRating() {
         List<MovieListResponse> movieListResponses = movieListRepository.findTop10ByOrderByUserRatingDesc().stream()
                 .map(movieList -> new MovieListResponse(
-                        movieList.getId(),
+                        movieList.getMovieCd(),
                         movieList.getMovieName(),
                         movieList.getImgurl(),
                         movieList.getUserRating()))

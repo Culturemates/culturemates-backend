@@ -9,7 +9,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 @Getter
 public class MovieListResponse {
-    private Long id;
+    private String movieCd;
     private String title;
     private String imgurl;
     private float userRating;
