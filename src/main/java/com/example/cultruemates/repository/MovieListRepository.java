@@ -12,4 +12,10 @@ public interface MovieListRepository extends JpaRepository<MovieList, Long> {
 
     @QueryHints(value = @QueryHint(name = "org.hibernate.readOnly", value = "true"))
     List<MovieList> findTop10ByOrderByUserRatingDesc();
+
+    boolean existsByMovieName(String movieName);
+
+    List<MovieList> findByMovieName(String movieName);
+
+    List<MovieList> findAllByOrderById();
 }
