@@ -1,5 +1,6 @@
 package com.example.cultruemates.controller;
 
+import com.example.cultruemates.dto.CurrentMovieListResponse;
 import com.example.cultruemates.dto.MovieListResponse;
 import com.example.cultruemates.service.MovieListService;
 import lombok.RequiredArgsConstructor;
@@ -23,5 +24,14 @@ public class MovieListController {
 
         return ResponseEntity.ok()
                 .body(movieListResponses);
+    }
+
+    @GetMapping("current")
+    public ResponseEntity<List<CurrentMovieListResponse>> findCurrrentScreening(){
+
+        List<CurrentMovieListResponse> responses = movieListService.findCurrentMovieList();
+
+        return ResponseEntity.ok()
+                .body(responses);
     }
 }
