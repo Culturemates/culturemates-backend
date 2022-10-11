@@ -12,6 +12,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Table (name = "movie_list")
 public class MovieList {
 
     @Id
@@ -21,7 +22,21 @@ public class MovieList {
     @Column(nullable = false)
     private String movieName;
 
+    private String movieCd;
+
+    @OneToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    @JoinColumn(name = "movie_code")
+    private MovieDetails movieDetails;
+
+    private String movieEnName;
+
+    private int openYear;
+
     private int createYear;
+
+    private int screenStartPeriod;
+
+    private int screenEndPeriod;
 
     private String createCountry;
 
@@ -36,4 +51,8 @@ public class MovieList {
     private String imgurl;
 
     private float userRating;
+
+    public void addMovieDetails(MovieDetails movieDetails){
+        this.movieDetails = movieDetails;
+    }
 }
