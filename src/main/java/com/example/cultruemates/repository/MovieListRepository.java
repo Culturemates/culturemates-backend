@@ -8,6 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import javax.persistence.QueryHint;
 import java.util.List;
+import java.util.Optional;
 
 public interface MovieListRepository extends JpaRepository<MovieList, Long> {
 
@@ -16,7 +17,7 @@ public interface MovieListRepository extends JpaRepository<MovieList, Long> {
 
     boolean existsByMovieName(String movieName);
 
-    List<MovieList> findByMovieName(String movieName);
+    Optional<MovieList> findByMovieCd(String movieCode);
 
     List<MovieList> findAllByOrderById();
 

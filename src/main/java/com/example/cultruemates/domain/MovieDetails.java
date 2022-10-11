@@ -42,14 +42,16 @@ public class MovieDetails {
     private List<MovieDetailsCompany> movieDetailsCompany = new ArrayList<>();
 
     @Builder
-    public MovieDetails(String movieCd, String movieNm, String movieNmEn, String showTm, int createYear, String openDt, String createStatus,
-                        String type, String createCountry, String imgurl, String audits, String director, String actors, String staffs) {
+    public MovieDetails(String movieCd, String movieNm, String movieNmEn, String showTm, int createYear, String openDt, String synopsis,
+                        String createStatus, String type, String createCountry, String imgurl, String audits, String director,
+                        String actors, String staffs) {
         this.movieCd = movieCd;
         this.movieNm = movieNm;
         this.movieNmEn = movieNmEn;
         this.showTm = showTm;
         this.createYear = createYear;
         this.openDt = openDt;
+        this.synopsis = synopsis;
         this.createStatus = createStatus;
         this.type = type;
         this.createCountry = createCountry;
