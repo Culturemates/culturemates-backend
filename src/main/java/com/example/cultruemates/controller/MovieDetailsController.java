@@ -18,7 +18,7 @@ public class MovieDetailsController {
 
     @GetMapping("/{code}")
     public ResponseEntity<MovieDetailsResponse> movieDetails(@PathVariable("code") String movieCode) {
-        MovieDetailsResponse movieDetailsResponse = movieDetailsService.findmovieDetaiils(movieCode);
+        MovieDetailsResponse movieDetailsResponse = movieDetailsService.findMovieDetails(movieCode);
 
         return ResponseEntity.ok()
                 .body(movieDetailsResponse);
