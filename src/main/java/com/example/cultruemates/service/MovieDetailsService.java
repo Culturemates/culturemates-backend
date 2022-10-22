@@ -29,6 +29,10 @@ public class MovieDetailsService {
 
     @Transactional(readOnly = true)
     public MovieDetailsResponse findmovieDetaiils(String movieCode) {
+        if(!isNumber(movieCode)){
+            new NotMovieExistsException("해당되는 영화가 존재하지 않습니다.");
+        }
+
         MovieDetails movieDetails = movieDetailsRepository.findByMovieCd(movieCode)
                 .orElseThrow(() -> new NotMovieExistsException("해당되는 영화가 존재하지 않습니다."));
         MovieList movieList = movieListRepository.findByMovieCd(movieCode)
@@ -69,5 +73,17 @@ public class MovieDetailsService {
                 openStatus,
                 companyByMovies
         );
+    }
+    
+    private boolean isNumber(String movieCode){
+        char tmp;
+        for (int i = 0; i < movieCode.length(); i++) {
+            tmp = movieCode.charAt(i);
+
+            if(Character.isDigit(tmp) == false){
+                return false;
+            }
+        }
+        return true;
     }
 }
