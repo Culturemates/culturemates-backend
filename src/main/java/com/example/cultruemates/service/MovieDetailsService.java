@@ -28,7 +28,7 @@ public class MovieDetailsService {
     private final MovieDetailsCompanyRepository movieDetailsCompanyRepository;
 
     @Transactional(readOnly = true)
-    public MovieDetailsResponse findmovieDetaiils(String movieCode) {
+    public MovieDetailsResponse findMovieDetails(String movieCode) {
         MovieDetails movieDetails = movieDetailsRepository.findByMovieCd(movieCode)
                 .orElseThrow(() -> new NotMovieExistsException("해당되는 영화가 존재하지 않습니다."));
         MovieList movieList = movieListRepository.findByMovieCd(movieCode)

@@ -38,6 +38,9 @@ public class MovieDetails {
     @OneToOne(mappedBy = "movieDetails")
     private MovieList movieList;
 
+    @OneToOne(mappedBy = "movieDetails")
+    private BoxOfficeMovie boxOfficeMovie;
+
     @OneToMany(mappedBy = "movieDetails", cascade = CascadeType.ALL)
     private List<MovieDetailsCompany> movieDetailsCompany = new ArrayList<>();
 
